@@ -8,44 +8,44 @@ VERBOSE = 1
 # PROGRAMA
 # =========================
 def p_program(p):
-    'program : PROGRAM ID SEMICOLON declarations compound_statement DOT'
+    'program : PROGRAM ID SEMICOLON declarations compound_statement DOT' #Regla principal de pascal
     print("Programa sintácticamente correcto!")
 
 # =========================
 # DECLARACIONES
 # =========================
 def p_declarations_1(p):
-    'declarations : VAR var_decl_list'
+    'declarations : VAR var_decl_list' #Donde hay variables
 
 def p_declarations_2(p):
-    'declarations : empty'
+    'declarations : empty' #Cuando no hay variables (vacio)
 
 def p_var_decl_list_1(p):
-    'var_decl_list : var_decl_list var_decl'
+    'var_decl_list : var_decl_list var_decl' #Lista de declaracaiones, permite varias lineas de variables
 
 def p_var_decl_list_2(p):
-    'var_decl_list : var_decl'
+    'var_decl_list : var_decl' #Seria el caso base donde solo hay una declaracion
 
 def p_var_decl(p):
-    'var_decl : id_list COLON ID SEMICOLON'
+    'var_decl : id_list COLON ID SEMICOLON' #Declaracion de integer
 
 def p_id_list_1(p):
-    'id_list : id_list COMMA ID'
+    'id_list : id_list COMMA ID' #Identificadores separados por coma
 
 def p_id_list_2(p):
-    'id_list : ID'
+    'id_list : ID' #Cuando solo hay un identificador
 
 # =========================
 # BLOQUE BEGIN END
 # =========================
 def p_compound_statement(p):
-    'compound_statement : BEGIN statement_list END'
+    'compound_statement : BEGIN statement_list END' #bloque principal begin...end
 
 def p_statement_list_1(p):
-    'statement_list : statement_list SEMICOLON statement'
+    'statement_list : statement_list SEMICOLON statement' #lista de sentencias separadas por ;
 
 def p_statement_list_2(p):
-    'statement_list : statement'
+    'statement_list : statement' #caseo base donde es solo una sentencia
 
 # =========================
 # SENTENCIAS
@@ -66,16 +66,16 @@ def p_statement_5(p):
     'statement : repeat_statement'
 
 def p_statement_6(p):
-    'statement : compound_statement'
+    'statement : compound_statement' #permite bloques anidados (begind...end dentro de otro)
 
 def p_statement_7(p):
-    'statement : empty'
+    'statement : empty' #sentencia vacia
 
 # =========================
 # ASIGNACION
 # =========================
 def p_assignment(p):
-    'assignment : ID ASSIGN expression'
+    'assignment : ID ASSIGN expression' #asignacion, ej: x := 1 + 2
 
 # =========================
 # IF ELSE
@@ -168,7 +168,7 @@ def p_empty(p):
 def p_error(p):
     if VERBOSE:
         if p:
-            print(f"Error sintáctico en línea {p.lineno}: token inesperado '{p.value}'...")
+            print(f"Error sintáctico en línea {p.lineno}: token inesperado '{p.value}'...") # error con un token
         else:
             print("Error sintáctico al final del archivo...")
     else:
