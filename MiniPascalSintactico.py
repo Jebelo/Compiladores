@@ -4,12 +4,18 @@ import MiniPascalV4
 import sys
 
 VERBOSE = 1
+error_sintactico = False
+
 # =========================
 # PROGRAMA
 # =========================
 def p_program(p):
-    'program : PROGRAM ID SEMICOLON declarations compound_statement DOT' #Regla principal de pascal
-    print("Programa sintácticamente correcto!")
+    'program : PROGRAM ID SEMICOLON declarations compound_statement DOT'
+    
+    if not error_sintactico:
+        print("Programa sintácticamente correcto!")
+    else:
+        print("El programa tiene errores sintácticos.")
 
 # =========================
 # DECLARACIONES
@@ -166,9 +172,15 @@ def p_empty(p):
 # ERROR
 # =========================
 def p_error(p):
+    global error_sintactico
+    error_sintactico = True
+
     if VERBOSE:
         if p:
-            print(f"Error sintáctico en línea {p.lineno}: token inesperado '{p.value}'...") # error con un token
+            print(f"Error sintáctico en línea {p.lineno}: token inesperado '{p.value}'...")
+            
+            # Recuperación simple
+            parser.errok()
         else:
             print("Error sintáctico al final del archivo...")
     else:
