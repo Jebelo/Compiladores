@@ -1,6 +1,6 @@
 import ply.yacc as yacc
-from MiniPascalV4 import tokens
-import MiniPascalV4
+from MiniPascalLexico import tokens
+import MiniPascalLexico
 import sys
 
 VERBOSE = 1
