@@ -3,18 +3,29 @@ program PruebaLexer;
 { Declaración de variables }
 var
  // 2edad : Integer; ejemplo que tiene que dar error ya que un ID no puede ser primero con numero
-  precio : Real;
+  edad : Integer;
+  precio : Float;
   contador, total : Integer;
   nombre : String;
   activo : Boolean;
+  y : Integer;
+  z : Integer;
+  Fibonacci : Integer;
+  i: Integer; //Integer - integer
+  PI : Float;
 
 (* Inicio del programa *)
 begin
 
-  edad := 25;
+  edad := hola; // Incompatibilidad de variables
   precio := 19.99;
   contador := 0;
   total := 10;
+  caracter := 'A';
+  x := 200; // Variable no declarada
+  y := nombre + total; // Variable con operacion invalida
+  z := 5 / 0; //Division incorrecta
+  PI := 5; // Constante que no se puede cambiar
 
   // ciclo while
   while contador < total do
